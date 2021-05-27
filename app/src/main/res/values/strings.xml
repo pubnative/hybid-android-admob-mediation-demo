@@ -14,7 +14,7 @@
     <string name="rewarded">Rewarded</string>
     <string name="native_ad">Native</string>
     <string name="admob_main_nav">Admob Main</string>
-
+    <string name="load_native">Load native</string>
     <string name="load">Load</string>
     <string name="show">Show</string>
     <string name="error">Error:</string>

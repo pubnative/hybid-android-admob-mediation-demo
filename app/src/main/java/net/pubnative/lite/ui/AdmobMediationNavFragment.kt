@@ -17,6 +17,8 @@ import net.pubnative.lite.ui.interstitialVideo.AdmobMediationInterstitialVideoAc
 import net.pubnative.lite.ui.leaderboard.AdmobMediationLeaderboardActivity
 import net.pubnative.lite.ui.mRect.AdmobMediationMRectActivity
 import net.pubnative.lite.ui.mRectVideo.AdmobMediationMRectVideoActivity
+import net.pubnative.lite.ui.native.AdmobMediationNativeActivity
+import net.pubnative.lite.ui.rewarded.AdmobMediationRewardedActivity
 
 class AdmobMediationNavFragment : Fragment() {
 
@@ -70,11 +72,13 @@ class AdmobMediationNavFragment : Fragment() {
         }
 
         _binding?.buttonAdmobRewarded?.setOnClickListener {
-
+            val intent = Intent(activity, AdmobMediationRewardedActivity::class.java)
+            startActivity(intent)
         }
 
         _binding?.buttonAdmobNative?.setOnClickListener {
-
+            val intent = Intent(activity, AdmobMediationNativeActivity::class.java)
+            startActivity(intent)
         }
     }
 
