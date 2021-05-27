@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.debug
+package net.pubnative.hybid.adapters.admob.ui.debug
 
 import android.os.Bundle
 import android.text.TextUtils

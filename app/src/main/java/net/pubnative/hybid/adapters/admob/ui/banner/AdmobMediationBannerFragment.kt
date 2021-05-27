@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.banner
+package net.pubnative.hybid.adapters.admob.ui.banner
 
 import android.os.Bundle
 import android.util.Log

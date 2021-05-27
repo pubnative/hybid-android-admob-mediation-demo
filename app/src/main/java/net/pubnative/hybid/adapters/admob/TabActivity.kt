@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentPagerAdapter
 import com.google.android.material.tabs.TabLayout
-import net.pubnative.hybid.adapters.admob.debug.DebugFragment
+import net.pubnative.hybid.adapters.admob.ui.debug.DebugFragment
 
 abstract class TabActivity : AppCompatActivity() {
 
@@ -27,11 +27,8 @@ abstract class TabActivity : AppCompatActivity() {
 
         supportActionBar?.title = getActivityTitle()
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
 
-        // Set up the ViewPager with the sections adapter.
         container = findViewById(R.id.container)
         tabs = findViewById(R.id.tabs)
 
