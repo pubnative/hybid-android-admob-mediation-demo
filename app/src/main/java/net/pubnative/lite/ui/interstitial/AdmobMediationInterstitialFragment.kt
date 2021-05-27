@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.ui.interstitial
+package net.pubnative.lite.ui.interstitial
 
 import android.os.Bundle
 import android.util.Log
@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
-import net.pubnative.hybid.adapters.admob.BuildConfig
 import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.hybid.adapters.admob.databinding.FragmentAdmobInterstitialBinding
-import net.pubnative.hybid.adapters.admob.utils.AdmobErrorParser
-import net.pubnative.hybid.adapters.admob.utils.ClipboardUtils
+import net.pubnative.lite.utils.AdmobErrorParser
+import net.pubnative.lite.utils.ClipboardUtils
+import net.pubnative.lite.BuildConfig
+import net.pubnative.lite.databinding.FragmentAdmobInterstitialBinding
 
 class AdmobMediationInterstitialFragment : Fragment() {
 

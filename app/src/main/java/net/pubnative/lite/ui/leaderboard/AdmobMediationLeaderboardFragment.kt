@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.ui.leaderboard
+package net.pubnative.lite.ui.leaderboard
 
 import android.os.Bundle
 import android.util.Log
@@ -10,11 +10,11 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import net.pubnative.hybid.adapters.admob.BuildConfig
 import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.hybid.adapters.admob.databinding.FragmentAdmobLeaderboardBinding
-import net.pubnative.hybid.adapters.admob.utils.AdmobErrorParser
-import net.pubnative.hybid.adapters.admob.utils.ClipboardUtils
+import net.pubnative.lite.utils.AdmobErrorParser
+import net.pubnative.lite.utils.ClipboardUtils
+import net.pubnative.lite.BuildConfig
+import net.pubnative.lite.databinding.FragmentAdmobLeaderboardBinding
 
 class AdmobMediationLeaderboardFragment : Fragment() {
     val TAG = AdmobMediationLeaderboardFragment::class.java.simpleName

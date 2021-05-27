@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.ui.mRect
+package net.pubnative.lite.ui.mRectVideo
 
 import android.os.Bundle
 import android.util.Log
@@ -10,18 +10,18 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import net.pubnative.hybid.adapters.admob.BuildConfig
 import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.hybid.adapters.admob.databinding.FragmentAdmobMrectBinding
-import net.pubnative.hybid.adapters.admob.utils.AdmobErrorParser
-import net.pubnative.hybid.adapters.admob.utils.ClipboardUtils
+import net.pubnative.lite.utils.AdmobErrorParser
+import net.pubnative.lite.utils.ClipboardUtils
+import net.pubnative.lite.BuildConfig
+import net.pubnative.lite.databinding.FragmentAdmobMrectVideoBinding
 
-class AdmobMediationMRectFragment : Fragment() {
-    val TAG = AdmobMediationMRectFragment::class.java.simpleName
+class AdmobMediationMRectVideoFragment : Fragment() {
+    val TAG = AdmobMediationMRectVideoFragment::class.java.simpleName
 
     private lateinit var admobMRect: AdView
 
-    private var _binding: FragmentAdmobMrectBinding? = null
+    private var _binding: FragmentAdmobMrectVideoBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -29,14 +29,14 @@ class AdmobMediationMRectFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAdmobMrectBinding.inflate(inflater, container, false)
+        _binding = FragmentAdmobMrectVideoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adUnitId = BuildConfig.admob_medium_ad_unit
+        val adUnitId = BuildConfig.admob_medium_video_ad_unit
 
         admobMRect = AdView(activity)
         admobMRect.adSize = AdSize.MEDIUM_RECTANGLE

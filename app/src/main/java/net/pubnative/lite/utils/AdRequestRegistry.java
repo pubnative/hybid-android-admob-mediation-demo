@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.utils;
+package net.pubnative.lite.utils;
 
 public class AdRequestRegistry {
     private RequestItem mLastAdRequest;

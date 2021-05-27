@@ -1,7 +1,7 @@
-package net.pubnative.hybid.adapters.admob.ui.mRectVideo
+package net.pubnative.lite.ui.mRectVideo
 
-import net.pubnative.hybid.adapters.admob.R
 import net.pubnative.hybid.adapters.admob.ui.TabActivity
+import net.pubnative.lite.R
 
 class AdmobMediationMRectVideoActivity : TabActivity() {
     override fun getAdFragment() = AdmobMediationMRectVideoFragment()

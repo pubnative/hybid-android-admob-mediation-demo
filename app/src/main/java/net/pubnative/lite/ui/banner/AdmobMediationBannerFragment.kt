@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.ui.mRectVideo
+package net.pubnative.lite.ui.banner
 
 import android.os.Bundle
 import android.util.Log
@@ -10,18 +10,18 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import net.pubnative.hybid.adapters.admob.BuildConfig
 import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.hybid.adapters.admob.databinding.FragmentAdmobMrectVideoBinding
-import net.pubnative.hybid.adapters.admob.utils.AdmobErrorParser
-import net.pubnative.hybid.adapters.admob.utils.ClipboardUtils
+import net.pubnative.lite.utils.AdmobErrorParser
+import net.pubnative.lite.utils.ClipboardUtils
+import net.pubnative.lite.BuildConfig
+import net.pubnative.lite.databinding.FragmentAdmobBannerBinding
 
-class AdmobMediationMRectVideoFragment : Fragment() {
-    val TAG = AdmobMediationMRectVideoFragment::class.java.simpleName
+class AdmobMediationBannerFragment : Fragment() {
+    val TAG = AdmobMediationBannerFragment::class.java.simpleName
 
-    private lateinit var admobMRect: AdView
+    private lateinit var admobBanner: AdView
 
-    private var _binding: FragmentAdmobMrectVideoBinding? = null
+    private var _binding: FragmentAdmobBannerBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -29,25 +29,25 @@ class AdmobMediationMRectVideoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAdmobMrectVideoBinding.inflate(inflater, container, false)
+        _binding = FragmentAdmobBannerBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adUnitId = BuildConfig.admob_medium_video_ad_unit
+        val adUnitId = BuildConfig.admob_banner_ad_unit
 
-        admobMRect = AdView(activity)
-        admobMRect.adSize = AdSize.MEDIUM_RECTANGLE
-        admobMRect.adUnitId = adUnitId
-        admobMRect.adListener = adListener
+        admobBanner = AdView(activity)
+        admobBanner.adSize = AdSize.BANNER
+        admobBanner.adUnitId = adUnitId
+        admobBanner.adListener = adListener
 
-        _binding?.admobMrectContainer?.addView(admobMRect)
+        _binding?.admobBannerContainer?.addView(admobBanner)
 
         _binding?.buttonLoad?.setOnClickListener {
             _binding?.viewError?.text = ""
-            admobMRect.loadAd(
+            admobBanner.loadAd(
                 AdRequest.Builder()
                     .addTestDevice("9CD3F3CADFC5127409B07C5F802273E7")
                     .build()
@@ -62,7 +62,6 @@ class AdmobMediationMRectVideoFragment : Fragment() {
         }
     }
 
-    // ------------------ Admob Ad Listener ---------------------
     private val adListener = object : AdListener() {
         override fun onAdLoaded() {
             super.onAdLoaded()

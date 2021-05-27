@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.utils;
+package net.pubnative.lite.utils;
 
 import android.util.Log;
 

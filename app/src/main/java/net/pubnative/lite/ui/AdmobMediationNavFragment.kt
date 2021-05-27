@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import net.pubnative.hybid.adapters.admob.databinding.FragmentNavMediationBinding
-import net.pubnative.hybid.adapters.admob.ui.banner.AdmobMediationBannerActivity
-import net.pubnative.hybid.adapters.admob.ui.interstitial.AdmobMediationInterstitialActivity
-import net.pubnative.hybid.adapters.admob.ui.leaderboard.AdmobMediationLeaderboardActivity
-import net.pubnative.hybid.adapters.admob.ui.mRect.AdmobMediationMRectActivity
-import net.pubnative.hybid.adapters.admob.ui.mRectVideo.AdmobMediationMRectVideoActivity
+import net.pubnative.lite.databinding.FragmentNavMediationBinding
+import net.pubnative.lite.ui.banner.AdmobMediationBannerActivity
+import net.pubnative.lite.ui.interstitial.AdmobMediationInterstitialActivity
+import net.pubnative.lite.ui.leaderboard.AdmobMediationLeaderboardActivity
+import net.pubnative.lite.ui.mRect.AdmobMediationMRectActivity
+import net.pubnative.lite.ui.mRectVideo.AdmobMediationMRectVideoActivity
 
 class AdmobMediationNavFragment : Fragment() {
 

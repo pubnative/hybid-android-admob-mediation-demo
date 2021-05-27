@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentPagerAdapter
 import com.google.android.material.tabs.TabLayout
-import net.pubnative.hybid.adapters.admob.R
+import net.pubnative.lite.R
 
 abstract class TabActivity : AppCompatActivity() {
 

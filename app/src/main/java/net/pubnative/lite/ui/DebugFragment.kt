@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import net.pubnative.hybid.adapters.admob.databinding.FragmentDebugBinding
-import net.pubnative.hybid.adapters.admob.utils.AdRequestRegistry
-import net.pubnative.hybid.adapters.admob.utils.ClipboardUtils
-import net.pubnative.hybid.adapters.admob.utils.JsonUtils
+import net.pubnative.lite.utils.ClipboardUtils
+import net.pubnative.lite.utils.JsonUtils
+import net.pubnative.lite.databinding.FragmentDebugBinding
+import net.pubnative.lite.utils.AdRequestRegistry
 
 class DebugFragment : Fragment() {
 
