@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">hybid-android-admob-mediation-demo</string>
+    <string name="admob">Admob</string>
+
+    <string name="ad">Ad</string>
+    <string name="debug">Debug</string>
+
+    <string name="banner">Banner</string>
+    <string name="interstitial">Interstitial</string>
+    <string name="interstitial_video">Interstitial Video</string>
+    <string name="medium">Medium</string>
+    <string name="medium_video">Medium Video</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="rewarded">Rewarded</string>
+    <string name="native_ad">Native</string>
+    <string name="admob_main_nav">Admob Main</string>
+
+    <string name="load">Load</string>
+    <string name="show">Show</string>
+    <string name="error">Error:</string>
+
+    <string name="request_url">PubNative request url:</string>
+    <string name="response">PubNative response:</string>
+    <string name="latency">PubNative latency (milliseconds):</string>
+
+    <string name="admob_native">Admob Native</string>
+    <string name="admob_banner">Admob Banner</string>
+    <string name="admob_interstitial">Admob Interstitial</string>
+    <string name="admob_interstitial_video">Admob Interstitial Video</string>
+    <string name="admob_medium">Admob Medium</string>
+    <string name="admob_medium_video">Admob Medium Video</string>
+    <string name="admob_leaderboard">Admob Leaderboard</string>
+    <string name="admob_rewarded">Admob Rewarded Video</string>
 </resources>
