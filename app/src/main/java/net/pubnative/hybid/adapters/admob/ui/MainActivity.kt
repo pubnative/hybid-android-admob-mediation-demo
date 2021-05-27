@@ -1,7 +1,8 @@
-package net.pubnative.hybid.adapters.admob
+package net.pubnative.hybid.adapters.admob.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import net.pubnative.hybid.adapters.admob.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

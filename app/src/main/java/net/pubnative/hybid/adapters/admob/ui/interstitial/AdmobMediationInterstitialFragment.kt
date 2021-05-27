@@ -10,7 +10,7 @@ import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import net.pubnative.hybid.adapters.admob.BuildConfig
-import net.pubnative.hybid.adapters.admob.TabActivity
+import net.pubnative.hybid.adapters.admob.ui.TabActivity
 import net.pubnative.hybid.adapters.admob.databinding.FragmentAdmobInterstitialBinding
 import net.pubnative.hybid.adapters.admob.utils.AdmobErrorParser
 import net.pubnative.hybid.adapters.admob.utils.ClipboardUtils

@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob
+package net.pubnative.hybid.adapters.admob.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import net.pubnative.hybid.adapters.admob.databinding.FragmentNavMediationBinding
 import net.pubnative.hybid.adapters.admob.ui.banner.AdmobMediationBannerActivity
 import net.pubnative.hybid.adapters.admob.ui.interstitial.AdmobMediationInterstitialActivity
+import net.pubnative.hybid.adapters.admob.ui.leaderboard.AdmobMediationLeaderboardActivity
 import net.pubnative.hybid.adapters.admob.ui.mRect.AdmobMediationMRectActivity
 import net.pubnative.hybid.adapters.admob.ui.mRectVideo.AdmobMediationMRectVideoActivity
 
@@ -45,7 +46,8 @@ class AdmobMediationNavFragment : Fragment() {
         }
 
         _binding?.buttonAdmobLeaderboard?.setOnClickListener {
-
+            val intent = Intent(activity, AdmobMediationLeaderboardActivity::class.java)
+            startActivity(intent)
         }
 
         _binding?.buttonAdmobInterstitial?.setOnClickListener {
@@ -64,35 +66,6 @@ class AdmobMediationNavFragment : Fragment() {
         _binding?.buttonAdmobNative?.setOnClickListener {
 
         }
-
-//        view.findViewById<Button>(R.id.button_admob_medium).setOnClickListener {
-
-//        }
-//
-//        view.findViewById<Button>(R.id.button_admob_medium_video).setOnClickListener {
-//            val intent = Intent(activity, AdmobMediationMRectVideoActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        view.findViewById<Button>(R.id.button_admob_leaderboard).setOnClickListener {
-//            val intent = Intent(activity, AdmobMediationLeaderboardActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        view.findViewById<Button>(R.id.button_admob_interstitial).setOnClickListener {
-//            val intent = Intent(activity, AdmobMediationInterstitialActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        view.findViewById<Button>(R.id.button_admob_interstitial_video).setOnClickListener {
-//            val intent = Intent(activity, AdmobMediationInterstitialVideoActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        view.findViewById<Button>(R.id.button_admob_rewarded).setOnClickListener {
-//            val intent = Intent(activity, AdmobMediationRewardedActivity::class.java)
-//            startActivity(intent)
-//        }
     }
 
     override fun onDestroyView() {

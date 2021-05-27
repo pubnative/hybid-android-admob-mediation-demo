@@ -1,7 +1,7 @@
 package net.pubnative.hybid.adapters.admob.ui.interstitial
 
 import net.pubnative.hybid.adapters.admob.R
-import net.pubnative.hybid.adapters.admob.TabActivity
+import net.pubnative.hybid.adapters.admob.ui.TabActivity
 
 class AdmobMediationInterstitialActivity : TabActivity() {
     override fun getAdFragment() = AdmobMediationInterstitialFragment()

@@ -11,7 +11,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import net.pubnative.hybid.adapters.admob.BuildConfig
-import net.pubnative.hybid.adapters.admob.TabActivity
+import net.pubnative.hybid.adapters.admob.ui.TabActivity
 import net.pubnative.hybid.adapters.admob.databinding.FragmentAdmobMrectVideoBinding
 import net.pubnative.hybid.adapters.admob.utils.AdmobErrorParser
 import net.pubnative.hybid.adapters.admob.utils.ClipboardUtils
