@@ -1,0 +1,31 @@
+def version_name = project.version
+if (branchName != "master") {
+    version_name = "${version_name}-${branchName}.${buildNumber}"
+}
+version = version_name
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode System.getenv("CIRCLE_BUILD_NUM") ? System.getenv("CIRCLE_BUILD_NUM").toInteger() : 1
+        versionName version_name
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'com.google.android.gms:play-services-ads:20.1.0'
+    implementation 'net.pubnative:hybid.sdk:2.4.7'
+    implementation project(':hybid.adapters.admob')
+}

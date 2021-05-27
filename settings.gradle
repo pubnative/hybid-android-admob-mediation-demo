@@ -1,2 +1,3 @@
 rootProject.name = "hybid-android-admob-mediation-demo"
 include ':app'
+include ':hybid.adapters.admob'
