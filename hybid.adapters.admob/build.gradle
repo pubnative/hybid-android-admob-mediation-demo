@@ -27,5 +27,4 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly 'com.google.android.gms:play-services-ads:20.1.0'
     implementation 'net.pubnative:hybid.sdk:2.4.7'
-    implementation project(':hybid.adapters.admob')
 }
