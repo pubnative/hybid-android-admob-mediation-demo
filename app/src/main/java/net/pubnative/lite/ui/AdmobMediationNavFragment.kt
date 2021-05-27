@@ -1,14 +1,19 @@
-package net.pubnative.hybid.adapters.admob.ui
+package net.pubnative.lite.ui
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import net.pubnative.lite.databinding.FragmentNavMediationBinding
 import net.pubnative.lite.ui.banner.AdmobMediationBannerActivity
 import net.pubnative.lite.ui.interstitial.AdmobMediationInterstitialActivity
+import net.pubnative.lite.ui.interstitialVideo.AdmobMediationInterstitialVideoActivity
 import net.pubnative.lite.ui.leaderboard.AdmobMediationLeaderboardActivity
 import net.pubnative.lite.ui.mRect.AdmobMediationMRectActivity
 import net.pubnative.lite.ui.mRectVideo.AdmobMediationMRectVideoActivity
@@ -17,6 +22,8 @@ class AdmobMediationNavFragment : Fragment() {
 
     private var _binding: FragmentNavMediationBinding? = null
     private val binding get() = _binding!!
+
+    private val PERMISSION_REQUEST = 1000
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,6 +36,8 @@ class AdmobMediationNavFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        checkPermissions()
 
         _binding?.buttonAdmobBanner?.setOnClickListener {
             val intent = Intent(activity, AdmobMediationBannerActivity::class.java)
@@ -56,7 +65,8 @@ class AdmobMediationNavFragment : Fragment() {
         }
 
         _binding?.buttonAdmobInterstitialVideo?.setOnClickListener {
-
+            val intent = Intent(activity, AdmobMediationInterstitialVideoActivity::class.java)
+            startActivity(intent)
         }
 
         _binding?.buttonAdmobRewarded?.setOnClickListener {
@@ -71,5 +81,39 @@ class AdmobMediationNavFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun checkPermissions() {
+        activity?.let {
+            if (ActivityCompat.checkSelfPermission(
+                    it,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                val permissionList = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+                ActivityCompat.requestPermissions(it, permissionList, PERMISSION_REQUEST)
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMISSION_REQUEST -> {
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    activity?.apply {
+                        Toast.makeText(
+                            this,
+                            "Location permission denied. You can change this on the app settings.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
     }
 }

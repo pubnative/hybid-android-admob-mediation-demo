@@ -2,7 +2,6 @@ package net.pubnative.lite.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import net.pubnative.hybid.adapters.admob.ui.AdmobMediationNavFragment
 import net.pubnative.lite.R
 
 class MainActivity : AppCompatActivity() {
