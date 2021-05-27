@@ -5,17 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import net.pubnative.hybid.adapters.admob.utils.Constants
-import net.pubnative.hybid.adapters.admob.R
+import net.pubnative.hybid.adapters.admob.BuildConfig
 import net.pubnative.hybid.adapters.admob.TabActivity
+import net.pubnative.hybid.adapters.admob.databinding.FragmentAdmobBannerBinding
 import net.pubnative.hybid.adapters.admob.utils.AdmobErrorParser
 import net.pubnative.hybid.adapters.admob.utils.ClipboardUtils
 
@@ -23,34 +20,33 @@ class AdmobMediationBannerFragment : Fragment() {
     val TAG = AdmobMediationBannerFragment::class.java.simpleName
 
     private lateinit var admobBanner: AdView
-    private lateinit var admobBannerContainer: FrameLayout
-    private lateinit var loadButton: Button
-    private lateinit var errorView: TextView
+
+    private var _binding: FragmentAdmobBannerBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_admob_banner, container, false)
+    ): View {
+        _binding = FragmentAdmobBannerBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        errorView = view.findViewById(R.id.view_error)
-        loadButton = view.findViewById(R.id.button_load)
-        admobBannerContainer = view.findViewById(R.id.admob_banner_container)
-
-        val adUnitId = Constants.ADMOB_BANNER_AD_UNIT
+        val adUnitId = BuildConfig.admob_banner_ad_unit
 
         admobBanner = AdView(activity)
         admobBanner.adSize = AdSize.BANNER
         admobBanner.adUnitId = adUnitId
         admobBanner.adListener = adListener
 
-        admobBannerContainer.addView(admobBanner)
+        _binding?.admobBannerContainer?.addView(admobBanner)
 
-        loadButton.setOnClickListener {
-            errorView.text = ""
+        _binding?.buttonLoad?.setOnClickListener {
+            _binding?.viewError?.text = ""
             admobBanner.loadAd(
                 AdRequest.Builder()
                     .addTestDevice("9CD3F3CADFC5127409B07C5F802273E7")
@@ -58,15 +54,14 @@ class AdmobMediationBannerFragment : Fragment() {
             )
         }
 
-        errorView.setOnClickListener {
+        _binding?.viewError?.setOnClickListener {
             ClipboardUtils.copyToClipboard(
                 requireActivity(),
-                errorView.text.toString()
+                _binding?.viewError?.text.toString()
             )
         }
     }
 
-    // ------------------ Admob Ad Listener ---------------------
     private val adListener = object : AdListener() {
         override fun onAdLoaded() {
             super.onAdLoaded()
@@ -77,7 +72,7 @@ class AdmobMediationBannerFragment : Fragment() {
         override fun onAdFailedToLoad(errorCode: Int) {
             super.onAdFailedToLoad(errorCode)
             displayLogs()
-            errorView.text = AdmobErrorParser.getErrorMessage(errorCode)
+            _binding?.viewError?.text = AdmobErrorParser.getErrorMessage(errorCode)
             Log.d(TAG, "onAdFailedToLoad")
         }
 

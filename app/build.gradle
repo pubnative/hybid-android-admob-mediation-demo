@@ -25,12 +25,37 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"https://api.pubnative.net/\""
+            buildConfigField "String", "admob_banner_ad_unit", "\"ca-app-pub-9763601123242224/5027189140\""
+            buildConfigField "String", "admob_medium_ad_unit", "\"ca-app-pub-9763601123242224/9033705159\""
+            buildConfigField "String", "admob_medium_video_ad_unit", "\"ca-app-pub-9763601123242224/4028543995\""
+            buildConfigField "String", "admob_leaderboard_ad_unit", "\"ca-app-pub-9763601123242224/4902888458\""
+            buildConfigField "String", "admob_rewarded_ad_unit", "\"ca-app-pub-9763601123242224/1139038306\""
+            buildConfigField "String", "admob_interstitial_ad_unit", "\"ca-app-pub-9763601123242224/6994876935\""
+            buildConfigField "String", "admob_interstitial_video_ad_unit", "\"ca-app-pub-9763601123242224/5439389087\""
+            buildConfigField "String", "admob_native_ad_unit", "\"ca-app-pub-9763601123242224/2966644429\""
+        }
+
+        debug {
+            minifyEnabled false
+            useProguard false
+            buildConfigField "String", "BASE_URL", "\"https://api.pubnative.net/\""
+            buildConfigField "String", "admob_banner_ad_unit", "\"ca-app-pub-9763601123242224/5027189140\""
+            buildConfigField "String", "admob_medium_ad_unit", "\"ca-app-pub-9763601123242224/9033705159\""
+            buildConfigField "String", "admob_medium_video_ad_unit", "\"ca-app-pub-9763601123242224/4028543995\""
+            buildConfigField "String", "admob_leaderboard_ad_unit", "\"ca-app-pub-9763601123242224/4902888458\""
+            buildConfigField "String", "admob_rewarded_ad_unit", "\"ca-app-pub-9763601123242224/1139038306\""
+            buildConfigField "String", "admob_interstitial_ad_unit", "\"ca-app-pub-9763601123242224/6994876935\""
+            buildConfigField "String", "admob_interstitial_video_ad_unit", "\"ca-app-pub-9763601123242224/5439389087\""
+            buildConfigField "String", "admob_native_ad_unit", "\"ca-app-pub-9763601123242224/2966644429\""
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }

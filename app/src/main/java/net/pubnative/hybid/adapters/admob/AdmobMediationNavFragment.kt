@@ -1,11 +1,13 @@
 package net.pubnative.hybid.adapters.admob
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import net.pubnative.hybid.adapters.admob.databinding.FragmentNavMediationBinding
+import net.pubnative.hybid.adapters.admob.ui.banner.AdmobMediationBannerActivity
 
 class AdmobMediationNavFragment : Fragment() {
 
@@ -25,7 +27,8 @@ class AdmobMediationNavFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         _binding?.buttonAdmobBanner?.setOnClickListener {
-
+            val intent = Intent(activity, AdmobMediationBannerActivity::class.java)
+            startActivity(intent)
         }
 
         _binding?.buttonAdmobMedium?.setOnClickListener {
@@ -56,11 +59,6 @@ class AdmobMediationNavFragment : Fragment() {
 
         }
 
-//        view.findViewById<Button>(R.id.button_admob_banner).setOnClickListener {
-//            val intent = Intent(activity, AdmobMediationBannerActivity::class.java)
-//            startActivity(intent)
-//        }
-//
 //        view.findViewById<Button>(R.id.button_admob_medium).setOnClickListener {
 //            val intent = Intent(activity, AdmobMediationMRectActivity::class.java)
 //            startActivity(intent)
