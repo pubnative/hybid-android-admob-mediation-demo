@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import net.pubnative.hybid.adapters.admob.databinding.FragmentNavMediationBinding
 import net.pubnative.hybid.adapters.admob.ui.banner.AdmobMediationBannerActivity
 import net.pubnative.hybid.adapters.admob.ui.interstitial.AdmobMediationInterstitialActivity
+import net.pubnative.hybid.adapters.admob.ui.mRect.AdmobMediationMRectActivity
 
 class AdmobMediationNavFragment : Fragment() {
 
@@ -33,11 +34,11 @@ class AdmobMediationNavFragment : Fragment() {
         }
 
         _binding?.buttonAdmobMedium?.setOnClickListener {
-
+            val intent = Intent(activity, AdmobMediationMRectActivity::class.java)
+            startActivity(intent)
         }
 
         _binding?.buttonAdmobMediumVideo?.setOnClickListener {
-
         }
 
         _binding?.buttonAdmobLeaderboard?.setOnClickListener {
@@ -62,8 +63,7 @@ class AdmobMediationNavFragment : Fragment() {
         }
 
 //        view.findViewById<Button>(R.id.button_admob_medium).setOnClickListener {
-//            val intent = Intent(activity, AdmobMediationMRectActivity::class.java)
-//            startActivity(intent)
+
 //        }
 //
 //        view.findViewById<Button>(R.id.button_admob_medium_video).setOnClickListener {
