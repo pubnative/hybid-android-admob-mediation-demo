@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import net.pubnative.hybid.adapters.admob.databinding.FragmentNavMediationBinding
 import net.pubnative.hybid.adapters.admob.ui.banner.AdmobMediationBannerActivity
+import net.pubnative.hybid.adapters.admob.ui.interstitial.AdmobMediationInterstitialActivity
 
 class AdmobMediationNavFragment : Fragment() {
 
@@ -44,7 +45,8 @@ class AdmobMediationNavFragment : Fragment() {
         }
 
         _binding?.buttonAdmobInterstitial?.setOnClickListener {
-
+            val intent = Intent(activity, AdmobMediationInterstitialActivity::class.java)
+            startActivity(intent)
         }
 
         _binding?.buttonAdmobInterstitialVideo?.setOnClickListener {
