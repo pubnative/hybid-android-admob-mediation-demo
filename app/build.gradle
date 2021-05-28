@@ -25,7 +25,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "\"https://api.pubnative.net/\""
             buildConfigField "String", "admob_banner_ad_unit", "\"ca-app-pub-9763601123242224/5027189140\""
             buildConfigField "String", "admob_medium_ad_unit", "\"ca-app-pub-9763601123242224/9033705159\""
             buildConfigField "String", "admob_medium_video_ad_unit", "\"ca-app-pub-9763601123242224/4028543995\""
@@ -39,7 +38,6 @@ android {
         debug {
             minifyEnabled false
             useProguard false
-            buildConfigField "String", "BASE_URL", "\"https://api.pubnative.net/\""
             buildConfigField "String", "admob_banner_ad_unit", "\"ca-app-pub-9763601123242224/5027189140\""
             buildConfigField "String", "admob_medium_ad_unit", "\"ca-app-pub-9763601123242224/9033705159\""
             buildConfigField "String", "admob_medium_video_ad_unit", "\"ca-app-pub-9763601123242224/4028543995\""
