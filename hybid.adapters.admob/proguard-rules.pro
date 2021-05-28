@@ -1,3 +1,0 @@
--keep class net.pubnative.** { *; }
--keep class com.monet.** { *; }
--keep class com.iab.omid.library.pubnativenet.** { *; }
