@@ -1,4 +1,4 @@
-package net.pubnative.lite.ui.native
+package net.pubnative.lite.demo.ui.native
 
 import android.os.Bundle
 import android.util.Log
@@ -15,10 +15,10 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.formats.NativeAdOptions
 import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.android.gms.ads.formats.UnifiedNativeAdView
-import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.lite.BuildConfig
-import net.pubnative.lite.R
-import net.pubnative.lite.databinding.FragmentAdmobNativeBinding
+import net.pubnative.lite.demo.TabActivity
+import net.pubnative.lite.demo.BuildConfig
+import net.pubnative.lite.demo.R
+import net.pubnative.lite.demo.databinding.FragmentAdmobNativeBinding
 import net.pubnative.lite.utils.AdmobErrorParser
 
 class AdmobMediationNativeFragment : Fragment() {

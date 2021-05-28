@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "net.pubnative.lite"
+        applicationId "net.pubnative.lite.demo"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -25,6 +25,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "app_token", "\"dde3c298b47648459f8ada4a982fa92d\""
             buildConfigField "String", "admob_banner_ad_unit", "\"ca-app-pub-9763601123242224/5027189140\""
             buildConfigField "String", "admob_medium_ad_unit", "\"ca-app-pub-9763601123242224/9033705159\""
             buildConfigField "String", "admob_medium_video_ad_unit", "\"ca-app-pub-9763601123242224/4028543995\""
@@ -38,6 +39,7 @@ android {
         debug {
             minifyEnabled false
             useProguard false
+            buildConfigField "String", "app_token", "\"dde3c298b47648459f8ada4a982fa92d\""
             buildConfigField "String", "admob_banner_ad_unit", "\"ca-app-pub-9763601123242224/5027189140\""
             buildConfigField "String", "admob_medium_ad_unit", "\"ca-app-pub-9763601123242224/9033705159\""
             buildConfigField "String", "admob_medium_video_ad_unit", "\"ca-app-pub-9763601123242224/4028543995\""
@@ -60,6 +62,7 @@ android {
 }
 
 dependencies {
+    //noinspection GradleDependency
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.5.0'
     implementation 'androidx.appcompat:appcompat:1.3.0'
@@ -70,4 +73,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.android.gms:play-services-ads:19.7.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'net.pubnative:hybid.sdk:2.4.7'
+    implementation 'net.pubnative:hybid.adapters.admob:2.4.7'
 }

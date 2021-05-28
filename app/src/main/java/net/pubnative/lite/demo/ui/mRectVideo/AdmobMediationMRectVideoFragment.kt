@@ -1,4 +1,4 @@
-package net.pubnative.lite.ui.interstitial
+package net.pubnative.lite.demo.ui.mRectVideo
 
 import android.os.Bundle
 import android.util.Log
@@ -8,19 +8,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
-import net.pubnative.hybid.adapters.admob.ui.TabActivity
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import net.pubnative.lite.demo.TabActivity
 import net.pubnative.lite.utils.AdmobErrorParser
 import net.pubnative.lite.utils.ClipboardUtils
-import net.pubnative.lite.BuildConfig
-import net.pubnative.lite.databinding.FragmentAdmobInterstitialBinding
+import net.pubnative.lite.demo.BuildConfig
+import net.pubnative.lite.demo.databinding.FragmentAdmobMrectVideoBinding
 
-class AdmobMediationInterstitialFragment : Fragment() {
+class AdmobMediationMRectVideoFragment : Fragment() {
+    val TAG = AdmobMediationMRectVideoFragment::class.java.simpleName
 
-    val TAG = AdmobMediationInterstitialFragment::class.java.simpleName
+    private lateinit var admobMRect: AdView
 
-    private lateinit var admobInterstitial: InterstitialAd
-    private var _binding: FragmentAdmobInterstitialBinding? = null
+    private var _binding: FragmentAdmobMrectVideoBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,32 +29,29 @@ class AdmobMediationInterstitialFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAdmobInterstitialBinding.inflate(inflater, container, false)
+        _binding = FragmentAdmobMrectVideoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding?.buttonShow?.isEnabled = false
+        val adUnitId = BuildConfig.admob_medium_video_ad_unit
 
-        val adUnitId = BuildConfig.admob_interstitial_ad_unit
+        admobMRect = AdView(activity)
+        admobMRect.adSize = AdSize.MEDIUM_RECTANGLE
+        admobMRect.adUnitId = adUnitId
+        admobMRect.adListener = adListener
 
-        admobInterstitial = InterstitialAd(activity)
-        admobInterstitial.adUnitId = adUnitId
-        admobInterstitial.adListener = adListener
+        _binding?.admobMrectContainer?.addView(admobMRect)
 
         _binding?.buttonLoad?.setOnClickListener {
             _binding?.viewError?.text = ""
-            admobInterstitial.loadAd(
+            admobMRect.loadAd(
                 AdRequest.Builder()
                     .addTestDevice("9CD3F3CADFC5127409B07C5F802273E7")
                     .build()
             )
-        }
-
-        _binding?.buttonShow?.setOnClickListener {
-            admobInterstitial.show()
         }
 
         _binding?.viewError?.setOnClickListener {
@@ -64,19 +62,19 @@ class AdmobMediationInterstitialFragment : Fragment() {
         }
     }
 
+    // ------------------ Admob Ad Listener ---------------------
     private val adListener = object : AdListener() {
         override fun onAdLoaded() {
             super.onAdLoaded()
-            Log.d(TAG, "onAdLoaded")
             displayLogs()
-            _binding?.buttonShow?.isEnabled = true
+            Log.d(TAG, "onAdLoaded")
         }
 
         override fun onAdFailedToLoad(errorCode: Int) {
             super.onAdFailedToLoad(errorCode)
-            Log.d(TAG, "onAdFailedToLoad")
             displayLogs()
             _binding?.viewError?.text = AdmobErrorParser.getErrorMessage(errorCode)
+            Log.d(TAG, "onAdFailedToLoad")
         }
 
         override fun onAdClicked() {

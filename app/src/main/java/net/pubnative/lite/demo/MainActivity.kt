@@ -1,8 +1,7 @@
-package net.pubnative.lite.ui
+package net.pubnative.lite.demo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import net.pubnative.lite.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

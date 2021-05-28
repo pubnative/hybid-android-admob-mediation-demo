@@ -1,7 +1,7 @@
-package net.pubnative.lite.ui.rewarded
+package net.pubnative.lite.demo.ui.rewarded
 
-import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.lite.R
+import net.pubnative.lite.demo.TabActivity
+import net.pubnative.lite.demo.R
 
 class AdmobMediationRewardedActivity : TabActivity() {
     override fun getAdFragment() = AdmobMediationRewardedFragment()

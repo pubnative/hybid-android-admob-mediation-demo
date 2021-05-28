@@ -1,7 +1,7 @@
-package net.pubnative.lite.ui.interstitialVideo
+package net.pubnative.lite.demo.ui.interstitialVideo
 
-import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.lite.R
+import net.pubnative.lite.demo.TabActivity
+import net.pubnative.lite.demo.R
 
 class AdmobMediationInterstitialVideoActivity : TabActivity() {
     override fun getAdFragment() = AdmobMediationInterstitialVideoFragment()

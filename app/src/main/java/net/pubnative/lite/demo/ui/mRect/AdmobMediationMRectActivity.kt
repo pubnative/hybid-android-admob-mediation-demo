@@ -1,7 +1,7 @@
-package net.pubnative.lite.ui.mRect
+package net.pubnative.lite.demo.ui.mRect
 
-import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.lite.R
+import net.pubnative.lite.demo.TabActivity
+import net.pubnative.lite.demo.R
 
 class AdmobMediationMRectActivity : TabActivity() {
     override fun getAdFragment() = AdmobMediationMRectFragment()

@@ -1,4 +1,4 @@
-package net.pubnative.lite.ui.rewarded
+package net.pubnative.lite.demo.ui.rewarded
 
 import android.os.Bundle
 import android.util.Log
@@ -15,9 +15,9 @@ import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdCallback
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
-import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.lite.BuildConfig
-import net.pubnative.lite.databinding.FragmentAdmobRewardedBinding
+import net.pubnative.lite.demo.TabActivity
+import net.pubnative.lite.demo.BuildConfig
+import net.pubnative.lite.demo.databinding.FragmentAdmobRewardedBinding
 import net.pubnative.lite.utils.AdmobErrorParser
 import net.pubnative.lite.utils.ClipboardUtils
 

@@ -1,7 +1,7 @@
-package net.pubnative.lite.ui.banner
+package net.pubnative.lite.demo.ui.banner
 
-import net.pubnative.hybid.adapters.admob.ui.TabActivity
-import net.pubnative.lite.R
+import net.pubnative.lite.demo.R
+import net.pubnative.lite.demo.TabActivity
 
 class AdmobMediationBannerActivity : TabActivity() {
     override fun getAdFragment() = AdmobMediationBannerFragment()

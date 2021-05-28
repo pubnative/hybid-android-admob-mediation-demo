@@ -1,4 +1,4 @@
-package net.pubnative.lite.ui
+package net.pubnative.lite.demo
 
 import android.Manifest
 import android.content.Intent
@@ -10,15 +10,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import net.pubnative.lite.databinding.FragmentNavMediationBinding
-import net.pubnative.lite.ui.banner.AdmobMediationBannerActivity
-import net.pubnative.lite.ui.interstitial.AdmobMediationInterstitialActivity
-import net.pubnative.lite.ui.interstitialVideo.AdmobMediationInterstitialVideoActivity
-import net.pubnative.lite.ui.leaderboard.AdmobMediationLeaderboardActivity
-import net.pubnative.lite.ui.mRect.AdmobMediationMRectActivity
-import net.pubnative.lite.ui.mRectVideo.AdmobMediationMRectVideoActivity
-import net.pubnative.lite.ui.native.AdmobMediationNativeActivity
-import net.pubnative.lite.ui.rewarded.AdmobMediationRewardedActivity
+import net.pubnative.lite.demo.databinding.FragmentNavMediationBinding
+import net.pubnative.lite.demo.ui.banner.AdmobMediationBannerActivity
+import net.pubnative.lite.demo.ui.interstitial.AdmobMediationInterstitialActivity
+import net.pubnative.lite.demo.ui.interstitialVideo.AdmobMediationInterstitialVideoActivity
+import net.pubnative.lite.demo.ui.leaderboard.AdmobMediationLeaderboardActivity
+import net.pubnative.lite.demo.ui.mRect.AdmobMediationMRectActivity
+import net.pubnative.lite.demo.ui.mRectVideo.AdmobMediationMRectVideoActivity
+import net.pubnative.lite.demo.ui.native.AdmobMediationNativeActivity
+import net.pubnative.lite.demo.ui.rewarded.AdmobMediationRewardedActivity
 
 class AdmobMediationNavFragment : Fragment() {
 

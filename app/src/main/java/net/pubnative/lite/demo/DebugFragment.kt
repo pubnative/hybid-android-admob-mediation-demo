@@ -1,4 +1,4 @@
-package net.pubnative.hybid.adapters.admob.ui
+package net.pubnative.lite.demo
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import net.pubnative.lite.utils.ClipboardUtils
 import net.pubnative.lite.utils.JsonUtils
-import net.pubnative.lite.databinding.FragmentDebugBinding
+import net.pubnative.lite.demo.databinding.FragmentDebugBinding
 import net.pubnative.lite.utils.AdRequestRegistry
 
 class DebugFragment : Fragment() {
