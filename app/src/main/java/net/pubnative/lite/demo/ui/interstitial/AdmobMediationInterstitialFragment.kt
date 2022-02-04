@@ -5,12 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import net.pubnative.lite.demo.TabActivity
-import net.pubnative.lite.utils.AdmobErrorParser
 import net.pubnative.lite.utils.ClipboardUtils
 import net.pubnative.lite.demo.BuildConfig
 import net.pubnative.lite.demo.databinding.FragmentAdmobInterstitialBinding
@@ -19,7 +19,7 @@ class AdmobMediationInterstitialFragment : Fragment() {
 
     val TAG = AdmobMediationInterstitialFragment::class.java.simpleName
 
-    private lateinit var admobInterstitial: InterstitialAd
+    private var admobInterstitial: InterstitialAd? = null
     private var _binding: FragmentAdmobInterstitialBinding? = null
     private val binding get() = _binding!!
 
@@ -39,21 +39,18 @@ class AdmobMediationInterstitialFragment : Fragment() {
 
         val adUnitId = BuildConfig.admob_interstitial_ad_unit
 
-        admobInterstitial = InterstitialAd(activity)
-        admobInterstitial.adUnitId = adUnitId
-        admobInterstitial.adListener = adListener
-
         _binding?.buttonLoad?.setOnClickListener {
             _binding?.viewError?.text = ""
-            admobInterstitial.loadAd(
-                AdRequest.Builder()
-                    .addTestDevice("9CD3F3CADFC5127409B07C5F802273E7")
-                    .build()
+            InterstitialAd.load(
+                requireActivity(),
+                adUnitId,
+                AdRequest.Builder().build(),
+                adLoadCallback
             )
         }
 
         _binding?.buttonShow?.setOnClickListener {
-            admobInterstitial.show()
+            admobInterstitial?.show(requireActivity())
         }
 
         _binding?.viewError?.setOnClickListener {
@@ -64,19 +61,32 @@ class AdmobMediationInterstitialFragment : Fragment() {
         }
     }
 
-    private val adListener = object : AdListener() {
-        override fun onAdLoaded() {
-            super.onAdLoaded()
+    // ---------------- Admob Ad Load Listener ---------------------
+    private val adLoadCallback = object : InterstitialAdLoadCallback() {
+        override fun onAdLoaded(interstitialAd: InterstitialAd) {
+            super.onAdLoaded(interstitialAd)
+            admobInterstitial = interstitialAd
+            admobInterstitial?.fullScreenContentCallback = fullScreenContentCallback
             Log.d(TAG, "onAdLoaded")
             displayLogs()
             _binding?.buttonShow?.isEnabled = true
         }
 
-        override fun onAdFailedToLoad(errorCode: Int) {
-            super.onAdFailedToLoad(errorCode)
+        override fun onAdFailedToLoad(error: LoadAdError) {
+            super.onAdFailedToLoad(error)
             Log.d(TAG, "onAdFailedToLoad")
+            admobInterstitial = null
+            _binding?.buttonShow?.isEnabled = false
             displayLogs()
-            _binding?.viewError?.text = AdmobErrorParser.getErrorMessage(errorCode)
+            _binding?.viewError?.text = error.message
+        }
+    }
+
+    // ---------------- Admob fullscreen Listener ---------------------
+    private val fullScreenContentCallback = object : FullScreenContentCallback() {
+        override fun onAdImpression() {
+            super.onAdImpression()
+            Log.d(TAG, "onAdImpression")
         }
 
         override fun onAdClicked() {
@@ -84,19 +94,24 @@ class AdmobMediationInterstitialFragment : Fragment() {
             Log.d(TAG, "onAdClicked")
         }
 
-        override fun onAdOpened() {
-            super.onAdOpened()
-            Log.d(TAG, "onAdOpened")
+        override fun onAdShowedFullScreenContent() {
+            super.onAdShowedFullScreenContent()
+            Log.d(TAG, "onAdShowedFullScreenContent")
         }
 
-        override fun onAdLeftApplication() {
-            super.onAdLeftApplication()
-            Log.d(TAG, "onAdLeftApplication")
+        override fun onAdFailedToShowFullScreenContent(error: AdError) {
+            super.onAdFailedToShowFullScreenContent(error)
+            Log.d(TAG, "onAdFailedToShowFullScreenContent")
+            Toast.makeText(requireActivity(), error.message, Toast.LENGTH_LONG).show()
+            admobInterstitial = null
+            _binding?.buttonShow?.isEnabled = false
         }
 
-        override fun onAdClosed() {
-            super.onAdClosed()
-            Log.d(TAG, "onAdClosed")
+        override fun onAdDismissedFullScreenContent() {
+            super.onAdDismissedFullScreenContent()
+            Log.d(TAG, "onAdFailedToLoad")
+            admobInterstitial = null
+            _binding?.buttonShow?.isEnabled = false
         }
     }
 

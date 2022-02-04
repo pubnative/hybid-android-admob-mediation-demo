@@ -12,9 +12,10 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.formats.NativeAdOptions
-import com.google.android.gms.ads.formats.UnifiedNativeAd
-import com.google.android.gms.ads.formats.UnifiedNativeAdView
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.google.android.gms.ads.nativead.NativeAdView
 import net.pubnative.lite.demo.TabActivity
 import net.pubnative.lite.demo.BuildConfig
 import net.pubnative.lite.demo.R
@@ -25,7 +26,8 @@ class AdmobMediationNativeFragment : Fragment() {
 
     val TAG = AdmobMediationNativeFragment::class.java.simpleName
 
-    private var admobNative: UnifiedNativeAd? = null
+    private var admobNative: NativeAd? = null
+    private val nativeAdOptions = NativeAdOptions.Builder().build()
 
     private var _binding: FragmentAdmobNativeBinding? = null
     private val binding get() = _binding!!
@@ -48,11 +50,11 @@ class AdmobMediationNativeFragment : Fragment() {
             admobNative?.destroy()
             _binding?.viewError?.text = ""
             val adLoader = AdLoader.Builder(requireContext(), adUnitId)
-                .forUnifiedNativeAd {
+                .forNativeAd { ad ->
                     if (isDetached) {
-                        it.destroy()
+                        ad.destroy()
                     } else {
-                        admobNative = it
+                        admobNative = ad
                         renderAd()
                     }
                 }
@@ -76,18 +78,17 @@ class AdmobMediationNativeFragment : Fragment() {
                     R.layout.layout_admob_native_ad,
                     _binding?.adContainer,
                     false
-                ) as UnifiedNativeAdView
+                ) as NativeAdView
             val adIcon = adView.findViewById<ImageView>(R.id.ad_icon)
             val adTitle = adView.findViewById<TextView>(R.id.ad_title)
             val adBanner = adView.findViewById<ImageView>(R.id.ad_banner)
             val adDescription = adView.findViewById<TextView>(R.id.ad_description)
             val adCallToAction = adView.findViewById<Button>(R.id.ad_call_to_action)
-            val adChoices = adView.findViewById<ImageView>(R.id.ad_choices)
 
             adIcon.setImageDrawable(it.icon?.drawable)
             adView.iconView = adIcon
 
-            it.images?.let { images ->
+            it.images.let { images ->
                 if (images.isNotEmpty()) {
                     adBanner.setImageDrawable(it.images.first().drawable)
                     adView.imageView = adBanner
@@ -100,14 +101,11 @@ class AdmobMediationNativeFragment : Fragment() {
             adView.bodyView = adDescription
             adCallToAction.text = it.callToAction
             adView.callToActionView = adCallToAction
-            //adView.advertiserView = adChoices
             adView.setNativeAd(it)
 
             _binding?.adContainer?.addView(adView)
         }
     }
-
-    private val nativeAdOptions = NativeAdOptions.Builder().build()
 
     // ------------------ Admob Ad Listener ---------------------
     private val adListener = object : AdListener() {
@@ -117,10 +115,10 @@ class AdmobMediationNativeFragment : Fragment() {
             Log.d(TAG, "onAdLoaded")
         }
 
-        override fun onAdFailedToLoad(errorCode: Int) {
-            super.onAdFailedToLoad(errorCode)
+        override fun onAdFailedToLoad(error: LoadAdError) {
+            super.onAdFailedToLoad(error)
             displayLogs()
-            _binding?.viewError?.text = AdmobErrorParser.getErrorMessage(errorCode)
+            _binding?.viewError?.text = error.message
             Log.d(TAG, "onAdFailedToLoad")
         }
 
@@ -142,11 +140,6 @@ class AdmobMediationNativeFragment : Fragment() {
         override fun onAdClosed() {
             super.onAdClosed()
             Log.d(TAG, "onAdClosed")
-        }
-
-        override fun onAdLeftApplication() {
-            super.onAdLeftApplication()
-            Log.d(TAG, "onAdLeftApplication")
         }
     }
 

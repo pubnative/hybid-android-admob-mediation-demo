@@ -6,12 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.*
 import net.pubnative.lite.demo.TabActivity
-import net.pubnative.lite.utils.AdmobErrorParser
 import net.pubnative.lite.utils.ClipboardUtils
 import net.pubnative.lite.demo.BuildConfig
 import net.pubnative.lite.demo.databinding.FragmentAdmobLeaderboardBinding
@@ -38,7 +34,7 @@ class AdmobMediationLeaderboardFragment : Fragment() {
 
         val adUnitId = BuildConfig.admob_leaderboard_ad_unit
 
-        admobLeaderboard = AdView(activity)
+        admobLeaderboard = AdView(requireActivity())
         admobLeaderboard.adSize = AdSize.LEADERBOARD
         admobLeaderboard.adUnitId = adUnitId
         admobLeaderboard.adListener = adListener
@@ -49,7 +45,6 @@ class AdmobMediationLeaderboardFragment : Fragment() {
             _binding?.viewError?.text = ""
             admobLeaderboard.loadAd(
                 AdRequest.Builder()
-                    .addTestDevice("9CD3F3CADFC5127409B07C5F802273E7")
                     .build()
             )
         }
@@ -70,11 +65,16 @@ class AdmobMediationLeaderboardFragment : Fragment() {
             Log.d(TAG, "onAdLoaded")
         }
 
-        override fun onAdFailedToLoad(errorCode: Int) {
-            super.onAdFailedToLoad(errorCode)
+        override fun onAdFailedToLoad(error: LoadAdError) {
+            super.onAdFailedToLoad(error)
             displayLogs()
-            _binding?.viewError?.text = AdmobErrorParser.getErrorMessage(errorCode)
+            _binding?.viewError?.text = error.message
             Log.d(TAG, "onAdFailedToLoad")
+        }
+
+        override fun onAdImpression() {
+            super.onAdImpression()
+            Log.d(TAG, "onAdImpression")
         }
 
         override fun onAdClicked() {
@@ -85,11 +85,6 @@ class AdmobMediationLeaderboardFragment : Fragment() {
         override fun onAdOpened() {
             super.onAdOpened()
             Log.d(TAG, "onAdOpened")
-        }
-
-        override fun onAdLeftApplication() {
-            super.onAdLeftApplication()
-            Log.d(TAG, "onAdLeftApplication")
         }
 
         override fun onAdClosed() {
